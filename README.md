@@ -7,7 +7,6 @@ if you are like me having a list of thing writing down on paper might be a hecti
 
 ## todo Contents 
 
-- [Features](#features)
 - [How to use](#how-to-use)
 - [Built With](#built-with)
 - [About](#about)
