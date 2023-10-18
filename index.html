@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MY TO-DO LIST</title>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+            text-align: center;
+        }
+
+        h1, h2 {
+            color: white;
+        }
+
+        .line-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+        }
+
+        .line {
+            width: 50%;
+            border-top: 1px solid white;
+        }
+
+        .input {
+            margin: 10px 0;
+            padding: 0  10px;
+            height: 50px;
+            width: 100%;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            background: gray;
+            color: white;
+        }
+
+        .input::placeholder {
+            color: white;
+        }
+
+        .container {
+            height: 450px;
+            width: 330px;
+            border-radius: 5px;
+            background: black;
+            padding: 80px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            margin: 0 auto;
+            margin-top: 65px;
+            color: white;
+            position: relative; 
+            overflow-y: auto;
+
+        }
+
+        #todo-list {
+            list-style: none;
+            padding: 0;
+            overflow-y: auto;
+        }
+
+        #todo-list li {
+            background: gray;
+            color: #fff;
+            height: 30px;
+            border-radius: 5px;
+            margin: 8px 0;
+            padding: 8px;
+            margin-top: 5px;
+            position: relative;
+        }
+
+        #todo-list li .fa-trash {
+            cursor: pointer;
+            position: absolute;
+            color: red;
+            right: 10px;
+            top: 50%; 
+            transform: translateY(-50%); 
+        }
+
+        .button {
+            margin: 10px;
+            padding: 3px;
+            height: 40px;
+            width: 40%;
+            outline: none;
+            border: none;
+            border-radius: 5px;
+            background: blue;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>To Do List</h1>
+        <hr class="line">
+        <h2>Add item to the list.</h2>
+        <input type="text" id="item" class="input" placeholder="Enter an item">
+        <input type="date" id="date" class="input" placeholder="Enter the date">
+        <button id="add-button" class="button">Add to do</button>
+
+        <ul id="todo-list"> </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   
+    <script>
+        $(document).ready(function() {
+            $('#add-button').click(function() {
+                var item = $('#item').val();
+                var date = $('#date').val();
+                if (item && date) {
+                    $('#todo-list').append('<li>' + item + ' - ' + date + ' <i class="fas fa-trash"></i></li>');
+                    $('#item').val('');
+                    $('#date').val('');
+                }
+            });
+
+            $('#todo-list').on('click', 'li i', function() {
+                $(this).parent().remove();
+            });
+        });
+    </script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</body>
+</html>
